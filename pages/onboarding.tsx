@@ -16,6 +16,7 @@ import { FunctionComponent, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 // https://dribbble.com/shots/18227366-Onboarding
+// getting simple animation going
 
 const inter = Inter({ subsets: ["latin"] });
 
