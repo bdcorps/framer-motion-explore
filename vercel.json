@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/slides/:match*",
+      "destination": "https://slidesai.launchman.page/:match*"
+    }
+  ]
+}
