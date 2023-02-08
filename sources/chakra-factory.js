@@ -1,54 +1,35 @@
-module.exports = {
-  App: `import { Container, chakra, shouldForwardProp } from '@chakra-ui/react';
+const source = `import { Container, chakra, shouldForwardProp, Center, IconButton} from '@chakra-ui/react';
 import { motion, isValidMotionProp } from 'framer-motion';
-
-const ChakraBox = chakra(motion.div, {
-  /**
-   * Allow motion props and non-Chakra props to be forwarded.
-   */
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
+import { SearchIcon } from '@chakra-ui/icons';
 
 export default function App() {
-  return (
-    <Container h="100vh" display="flex" alignItems="center" justifyContent="center">
-      <ChakraBox
-        animate={{
-          scale: [1, 2, 2, 1, 1],
-          rotate: [0, 0, 270, 270, 0],
-          borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-        }}
-        // @ts-ignore no problem in operation, although type error appears.
-        transition={{
-          duration: 3,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "loop",
-        }}
-        padding="2"
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        width="100px"
-        height="100px"
-      >
-        I'm Dizzy!
-      </ChakraBox>
-    </Container>
-  )
-}`,
-  Index: `import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
+return (
+  <Center h="100vh" backgroundColor="purple.50">
+  <IconButton
+    as={motion.div}
+    aria-label="Search database"
+    icon={<SearchIcon />}
+    backgroundColor="white"
+    size="sm"
+    initial={{
+      borderWidth: "0",
+      borderColor: "#FFF",
+      boxShadow: "none",
+      scale: 1,
+    }}
+    whileHover={{
+      borderWidth: "2px",
+      borderColor: "#5000FF",
+      borderRadius: "6px",
+      boxShadow: "0 2px 40px -4px rgb(80 0 255 / 0.4)",
+      transition: { duration: 0.03 },
+      scale: 0.97,
+    }}
+    transition={{ duration: 2 }}
+    _hover={{ backgroundColor: "white", cursor: "pointer" }}
+  />
+</Center>
+)
+}`
 
-import App from "./App";
-
-const container = document.getElementById("root");
-const root = createRoot(container!);
-root.render(
-  <ChakraProvider>
-    <App />
-  </ChakraProvider>
-);`,
-}
+export default source;

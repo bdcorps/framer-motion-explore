@@ -8,7 +8,7 @@ import { FunctionComponent } from "react";
 import {
   App as AppFactory,
   Index as IndexFactory,
-} from "../sources/chakra-factory.js";
+} from "../sources/chakra-factory-2.js";
 
 interface SandpackPageProps {}
 
@@ -27,6 +27,7 @@ const SandpackPage: FunctionComponent<SandpackPageProps> = () => {
           react: "^18.0.0",
           "react-dom": "^18.0.0",
           "react-scripts": "^4.0.0",
+          "react-hotkeys-hook": "^4.3.5",
         },
         devDependencies: {
           "@types/react": "^18.0.0",
@@ -40,11 +41,7 @@ const SandpackPage: FunctionComponent<SandpackPageProps> = () => {
       }}
     >
       <HStack align="flex-start">
-        <Box
-          as={SandpackPreview}
-          h="100vh"
-          sx={{ "& iframe": { flex: "initial", flexGrow: 1 } }}
-        />
+        <Box as={SandpackPreview} h="100vh" />
         <SandpackCodeEditor
           showLineNumbers
           showInlineErrors
