@@ -4,11 +4,16 @@ import { SearchIcon } from '@chakra-ui/icons';
 
 export default function App() {
 return (
-  <Center h="100vh" backgroundColor="purple.50">
+  <LightupIcon/>
+)
+}
+
+const LightupIcon = ()=>{
+  return <Center h="100vh" backgroundColor="purple.50">
   <IconButton
     as={motion.div}
     aria-label="Search database"
-    icon={<SearchIcon />}
+    icon={<SearchIcon/>}
     backgroundColor="white"
     size="sm"
     initial={{
@@ -24,12 +29,16 @@ return (
       boxShadow: "0 2px 40px -4px rgb(80 0 255 / 0.4)",
       transition: { duration: 0.03 },
       scale: 0.97,
+      color:"#5000FF"
     }}
     transition={{ duration: 2 }}
     _hover={{ backgroundColor: "white", cursor: "pointer" }}
   />
 </Center>
-)
-}`
+}
+
+`
+
+
 
 export default source;

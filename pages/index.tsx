@@ -1,3 +1,4 @@
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -50,12 +51,12 @@ export const Card: FunctionComponent<CardProps> = ({ slug }: any) => {
           autoPlay
           loop
           muted
-          poster="https://cdn.godly.website/1b1d40c5-5a4d-48ae-a092-041f198c9ca1.jpg?width=576&amp;quality=70"
+          poster="/animation1.png"
           // style={{ filter: "saturate(0)" }}
         >
           <source
-            src="https://video.godly.website/video/upload/w_576/q_70/recordings/akk6f2j7r8qyqzqkpb0q.webm"
-            type="video/webm"
+            src="https://launchman-space.nyc3.cdn.digitaloceanspaces.com/framer-animations%22.mp4"
+            type="video/mp4"
           />
         </Box>
       </Box>
@@ -85,16 +86,16 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
         <Center textAlign="center" h="70vh" maxW={800}>
           <VStack align="center" maxW="container.sm" spacing={8}>
             <VStack align="center" maxW="container.sm" spacing={4}>
-              <Heading as="h1" fontWeight={600} fontSize="4xl">
-                Ready to copy Framer Motion animations for your Next project
+              <Heading as="h1" fontWeight={800} fontSize="5xl">
+                Ready to copy Framer Motion animations
               </Heading>
-              <Text as="h2" color="gray.600">
+              <Text as="h2" color="gray.600" fontSize="xl">
                 Astronomically good framer animations from all over the web (/w
                 code)
               </Text>
             </VStack>
 
-            <Button colorScheme="brand" rounded="full">
+            <Button colorScheme="brand" rightIcon={<ArrowForwardIcon />}>
               Subscribe
             </Button>
           </VStack>
@@ -107,7 +108,7 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
                 <Button
                   key={category}
                   colorScheme="gray"
-                  size="sm"
+                  size="md"
                   rounded="full"
                   fontWeight={400}
                 >
@@ -116,7 +117,7 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
               );
             })}
           </HStack>
-          <SimpleGrid columns={[1, 3]} w="full" gridGap={10}>
+          <SimpleGrid columns={[1, 2]} w="full" gridGap={10}>
             {sources.map((source, i) => {
               return <Card key={`source_${i}`} slug={source.slug} />;
             })}

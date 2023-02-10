@@ -1,3 +1,7 @@
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+
 // pages/_app.js
 import { ChakraProvider } from "@chakra-ui/react";
 

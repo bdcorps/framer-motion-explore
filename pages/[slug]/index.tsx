@@ -1,4 +1,4 @@
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import {
   SandpackCodeEditor,
   SandpackPreview,
   SandpackProvider,
+  UnstyledOpenInCodeSandboxButton,
 } from "@codesandbox/sandpack-react";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
@@ -35,53 +36,7 @@ const AnimationPage: FunctionComponent<AnimationPageProps> = () => {
   console.log(animation.source.default);
   return (
     <LandingLayout>
-      <VStack w="100%" spacing={10} align="flex-start" mt={20}>
-        <HStack spacing={1}>
-          <IconButton
-            icon={<ArrowBackIcon />}
-            rounded="full"
-            aria-label="Back button"
-            variant="ghost"
-            onClick={() => {
-              router.push("/");
-            }}
-          ></IconButton>
-          <Text>Back</Text>
-        </HStack>
-
-        <HStack w="full" justify="space-between" align="flex-end">
-          <VStack>
-            <HStack spacing={3}>
-              {["hover", "click", "landing page"].map(
-                (tag: string, i: number) => (
-                  <Button
-                    key={`tag_${i}`}
-                    fontSize="sm"
-                    variant="link"
-                    fontWeight={400}
-                  >
-                    {tag}
-                  </Button>
-                )
-              )}
-            </HStack>
-
-            <Heading>{animation.slug}</Heading>
-          </VStack>
-
-          <HStack spacing={4}>
-            <Button colorScheme="brand" size="sm">
-              {" "}
-              View full screen
-            </Button>
-            <Button colorScheme="brand" size="sm">
-              {" "}
-              Get code
-            </Button>
-          </HStack>
-        </HStack>
-
-        {/* <Heading as="h1">{animation.slug}</Heading> */}
+      <VStack w="100%" spacing={6} align="flex-start" mt={20}>
         <SandpackProvider
           template="react-ts"
           customSetup={{
@@ -108,36 +63,101 @@ const AnimationPage: FunctionComponent<AnimationPageProps> = () => {
             "/index.tsx": IndexFile,
           }}
           options={{
-            resizablePanels: true,
             classes: {
               "sp-wrapper": "wrapper",
             },
           }}
         >
-          <HStack align="flex-start" w="full">
-            <Box
-              as={SandpackPreview}
-              maxH="600px"
-              h="80vh"
-              borderWidth="1px"
-              borderColor="gray.300"
-              className="wrapper"
-              flex={1}
-            />
-            <SandpackCodeEditor
-              showLineNumbers
-              showInlineErrors
-              style={{
-                maxHeight: "600px",
-                flex: 1,
-              }}
-            />
-          </HStack>
+          <VStack spacing={4}>
+            <HStack w="full" justify="space-between" align="flex-end">
+              <VStack spacing={4}>
+                <HStack spacing={3}>
+                  {["hover", "click", "landing page"].map(
+                    (tag: string, i: number) => (
+                      <Button
+                        key={`tag_${i}`}
+                        fontSize="sm"
+                        variant="link"
+                        fontWeight={400}
+                      >
+                        {tag}
+                      </Button>
+                    )
+                  )}
+                </HStack>
+
+                <HStack spacing={1}>
+                  <IconButton
+                    icon={<ArrowBackIcon />}
+                    rounded="full"
+                    aria-label="Back button"
+                    variant="ghost"
+                    onClick={() => {
+                      router.push("/");
+                    }}
+                  ></IconButton>
+                  <Heading>{animation.slug}</Heading>
+                </HStack>
+              </VStack>
+
+              <HStack spacing={4}>
+                <Button
+                  colorScheme="brand"
+                  size="sm"
+                  variant="ghost"
+                  rightIcon={<ExternalLinkIcon />}
+                  onClick={() => {
+                    router.push(router.asPath + "/full");
+                  }}
+                >
+                  Full preview
+                </Button>
+                {/* <Button
+                colorScheme="brand"
+                size="sm"
+                rightIcon={<ExternalLinkIcon />}
+                onClick={() => {
+                  // router.push(router.basePath + "/full");
+                }}
+              >
+                Get code
+              </Button> */}
+
+                <UnstyledOpenInCodeSandboxButton
+                  style={{ fontFamily: "Inter" }}
+                >
+                  Open in CodeSandbox
+                </UnstyledOpenInCodeSandboxButton>
+              </HStack>
+            </HStack>
+
+            {/* <Heading as="h1">{animation.slug}</Heading> */}
+
+            <HStack align="flex-start" w="full">
+              <Box
+                as={SandpackPreview}
+                h="600px"
+                borderWidth="1px"
+                borderColor="gray.300"
+                className="wrapper"
+                flex={1}
+              />
+              <SandpackCodeEditor
+                showLineNumbers
+                showInlineErrors
+                style={{
+                  height: "600px",
+                  flex: 1,
+                }}
+              />
+            </HStack>
+          </VStack>
         </SandpackProvider>
         <VStack align="flex-start" spacing={12}>
           <VStack align="flex-start" spacing={1}>
             <Text>Perfect for hovering over a card on a landing page</Text>
             <Text>Inspired by: Max blog</Text>
+            <Text>Created by: Max blog</Text>
           </VStack>
 
           <Divider />
