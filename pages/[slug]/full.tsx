@@ -2,20 +2,18 @@ import { Box } from "@chakra-ui/react";
 import { SandpackPreview, SandpackProvider } from "@codesandbox/sandpack-react";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
-import { IndexFile, sources } from "../../sources";
+import { getPostBySlug, IndexFile } from "../../sources";
 
 interface FullAnimationProps {}
 
 const FullAnimation: FunctionComponent<FullAnimationProps> = () => {
   const router = useRouter();
-  const slug = router.query.slug;
-  console.log({ slug });
+  const slug: string = String(router.query.slug);
 
-  const animation = sources.find((source: any) => source.slug === slug);
+  const animation = getPostBySlug(slug);
   if (!animation) {
     return <>No animation found</>;
   }
-  console.log(animation.source.default);
 
   return (
     <SandpackProvider
@@ -40,7 +38,7 @@ const FullAnimation: FunctionComponent<FullAnimationProps> = () => {
         },
       }}
       files={{
-        "/App.tsx": (animation!.source as any).default,
+        "/App.tsx": animation!.source,
         "/index.tsx": IndexFile,
       }}
       options={{

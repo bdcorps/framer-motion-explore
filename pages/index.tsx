@@ -1,72 +1,16 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
-  Box,
   Button,
   Center,
   Heading,
-  HStack,
   SimpleGrid,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 import LandingLayout from "../components/Landing/LandingLayout";
+import { PostCard } from "../components/PostCard";
 import { sources } from "../sources";
-
-interface CardProps {
-  slug: string;
-}
-
-export const Card: FunctionComponent<CardProps> = ({ slug }: any) => {
-  const router = useRouter();
-
-  const colors = [
-    "gray.100",
-    "brand.100",
-    "green.100",
-    "purple.100",
-    "red.100",
-  ];
-  const backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-  return (
-    <VStack
-      align="flex-start"
-      cursor="pointer"
-      onClick={() => {
-        router.push(`/${slug}`);
-      }}
-    >
-      <Box // borderWidth="1px"
-        // backgroundColor={backgroundColor}
-        // borderColor="gray.400"
-        // p={4}
-        rounded="md"
-      >
-        <Box
-          filter="saturate(0)"
-          _hover={{ filter: "saturate(1)" }}
-          transition="all 0.2s ease-in-out"
-          as="video"
-          autoPlay
-          loop
-          muted
-          poster="/animation1.png"
-          // style={{ filter: "saturate(0)" }}
-        >
-          <source
-            src="https://launchman-space.nyc3.cdn.digitaloceanspaces.com/framer-animations%22.mp4"
-            type="video/mp4"
-          />
-        </Box>
-      </Box>
-
-      <Text fontSize="sm" fontWeight={500}>
-        EPIC Agency
-      </Text>
-    </VStack>
-  );
-};
 
 interface MainPageProps {}
 
@@ -90,8 +34,8 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
                 Ready to copy Framer Motion animations
               </Heading>
               <Text as="h2" color="gray.600" fontSize="xl">
-                Astronomically good framer animations from all over the web (/w
-                code)
+                Delight your users with beautiful micro-animations that leave
+                them with a satisfied smile
               </Text>
             </VStack>
 
@@ -101,8 +45,8 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
           </VStack>
         </Center>
 
-        <VStack align="center" spacing={4}>
-          <HStack w="full">
+        <VStack align="center" spacing={4} w="full">
+          {/* <HStack w="full">
             {categories.map((category) => {
               return (
                 <Button
@@ -116,10 +60,16 @@ const MainPage: FunctionComponent<MainPageProps> = () => {
                 </Button>
               );
             })}
-          </HStack>
+          </HStack> */}
           <SimpleGrid columns={[1, 2]} w="full" gridGap={10}>
             {sources.map((source, i) => {
-              return <Card key={`source_${i}`} slug={source.slug} />;
+              return (
+                <PostCard
+                  key={`source_${i}`}
+                  slug={source.slug}
+                  name={source.name}
+                />
+              );
             })}
           </SimpleGrid>
         </VStack>
