@@ -18,7 +18,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useScrollPosition } from "/hooks/useScrollPosition";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
 const navLinks = [
   { name: "Home", link: "/" },
