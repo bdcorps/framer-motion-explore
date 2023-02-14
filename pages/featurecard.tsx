@@ -5,7 +5,7 @@ import {
   IconButton,
   shouldForwardProp,
   SimpleGrid,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { isValidMotionProp, motion } from "framer-motion";
 import { FunctionComponent } from "react";
@@ -80,6 +80,7 @@ const PostCard: FunctionComponent<PostCardProps> = () => {
         scale: 0.97,
         color: "#5000FF",
       }}
+      // @ts-ignore
       transition={{ duration: 0.02 }}
     >
       <IconButton

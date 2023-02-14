@@ -1,6 +1,5 @@
 import { BoxProps, Center, forwardRef, Text } from "@chakra-ui/react";
-import { animate } from "framer-motion";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 
 interface NumberCounterProps {
   start: number;
@@ -15,22 +14,23 @@ const NumberCounter: FunctionComponent<NumberCounterProps> = ({
   start,
   end,
 }: NumberCounterProps) => {
-  const nodeRef = useRef();
+  return <p>d</p>;
+  // const nodeRef = useRef();
 
-  useEffect(() => {
-    const node = nodeRef.current;
+  // useEffect(() => {
+  //   const node = nodeRef.current;
 
-    const controls = animate(start, end, {
-      duration: 1,
-      onUpdate(value) {
-        node.textContent = value.toFixed(1);
-      },
-    });
+  //   const controls = animate(start, end, {
+  //     duration: 1,
+  //     onUpdate(value) {
+  //       node.textContent = value.toFixed(1);
+  //     },
+  //   });
 
-    return () => controls.stop();
-  }, [start, end]);
+  //   return () => controls.stop();
+  // }, [start, end]);
 
-  return <AnimatedText ref={nodeRef} />;
+  // return <AnimatedText ref={nodeRef} />;
 };
 
 const Home = () => {
