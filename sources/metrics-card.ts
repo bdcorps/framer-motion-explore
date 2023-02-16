@@ -1,5 +1,4 @@
-import {
-  Box,
+const source = `import {
   Button,
   Center,
   chakra,
@@ -10,7 +9,7 @@ import {
 import { isValidMotionProp, motion } from "framer-motion";
 import { FunctionComponent } from "react";
 
-interface PostCardProps {}
+interface MetricCardProps {}
 
 const variants = {
   initial: {},
@@ -70,14 +69,13 @@ const ChakraBox = chakra(motion.div, {
     isValidMotionProp(prop) || shouldForwardProp(prop),
 });
 
-const PostCard: FunctionComponent<PostCardProps> = () => {
+const MetricCard: FunctionComponent<MetricCardProps> = () => {
   return (
     <ChakraBox
       // as={motion.div}
       rounded="md"
       boxShadow="base"
-      backgroundColor="gray.50"
-      p={6}
+      p={4}
       variants={variants}
       cursor="pointer"
       initial="initial"
@@ -86,29 +84,37 @@ const PostCard: FunctionComponent<PostCardProps> = () => {
       transition={{ duration: 0.01 }}
       overflow="hidden"
       position="relative"
+      backgroundColor="purple.500"
+      w={400}
     >
-      <VStack spacing={2} align="flex-start">
-        <Text color="gray.800" fontWeight={600}>
+      <VStack spacing={1} align="flex-start">
+        <Text
+          color="whiteAlpha.800"
+          fontWeight={600}
+          textTransform="uppercase"
+          fontSize="xs"
+        >
           Total Audience
         </Text>
         <Text
           as={motion.p}
-          color="gray.600"
-          fontSize="4xl"
+          color="white"
+          fontSize="2xl"
           variants={hideMetricsVariants}
         >
-          2933.4K members
+          2.4K members
         </Text>
       </VStack>
       <Button
         as={motion.button}
-        variant="solid"
-        colorScheme="brand"
+        variant="link"
+        color="white"
         variants={moreInfoVariants}
         position="absolute"
         bottom={6}
+        size="md"
       >
-        View account details
+        View account details →
       </Button>
     </ChakraBox>
   );
@@ -117,11 +123,22 @@ const PostCard: FunctionComponent<PostCardProps> = () => {
 const Home = () => {
   return (
     <Center h="100vh" bgColor="purple.50">
-      <Box w={400}>
-        <PostCard />
-      </Box>
+      <VStack spacing={4}>
+        <MetricCard />
+        <MetricCard />
+        <MetricCard />
+      </VStack>
     </Center>
   );
 };
 
-export default Home;
+export default Home;`
+
+const animation = {
+  name: "Metrics Card",
+  slug: "metrics-card",
+  description: "",
+  source,
+}
+
+export default animation;

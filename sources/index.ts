@@ -1,11 +1,14 @@
 import animation3 from "./animated-search";
+import blogCard from "./blog-card";
 import ctaButton1 from "./cta-button-1";
 import ctaButton2 from "./cta-button-2";
+import landingHeroTestimonials from "./landing-hero-testimonials";
 import animation2 from "./light-up-icons";
+import metricsCard from "./metrics-card";
 import animation1 from "./saas-onboarding-modal";
 import skiff from "./skiff";
 
-export const sources = [animation1, animation2, animation3, skiff, ctaButton1, ctaButton2];
+export const sources = [animation1, animation2, animation3, skiff, ctaButton1, ctaButton2, landingHeroTestimonials, metricsCard, blogCard];
 
 export const getPostBySlug = (slug: string) => {
   return sources.find((source) => source.slug === slug);

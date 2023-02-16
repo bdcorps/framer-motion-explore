@@ -1,4 +1,4 @@
-import {
+const source = `import {
   Box,
   Center,
   chakra,
@@ -12,9 +12,6 @@ import { AnimatePresence, isValidMotionProp, motion } from "framer-motion";
 import { FunctionComponent, useState } from "react";
 
 // https://dribbble.com/shots/19898644--The-Graints
-
-const inter = Inter({ subsets: ["latin"] });
-
 const ChakraBox = chakra(motion.div, {
   /**
    * Allow motion props and non-Chakra props to be forwarded.
@@ -108,25 +105,46 @@ const StaggeredChildren: FunctionComponent<StaggeredChildrenProps> = () => {
         position="absolute"
         top={0}
       >
-        Create your own unique design with Graints
+        The easiest way to get paid online
       </Heading>
       <Box
-        // position="absolute"
-        // top={0}
         position="relative"
         as={motion.div}
         variants={variants}
         initial="enter"
         animate="center"
-        // bg="purple.500"
         p={10}
         rounded="md"
       >
         {[
-          { top: 230, right: 100, emoji: "🥳" },
-          { top: 50, right: 400, emoji: "🥳" },
-          { top: 100, right: 0, emoji: "🤯" },
-          { top: 160, right: -200, emoji: "🤑" },
+          {
+            top: 230,
+            right: 100,
+            emoji: "🥳",
+            message:
+              "This app improves efficiency for freelancers. A game-changer.",
+          },
+          {
+            top: 50,
+            right: 400,
+            emoji: "🥳",
+            message:
+              "This app improves efficiency for freelancers. A game-changer.",
+          },
+          {
+            top: 0,
+            right: 0,
+            emoji: "🤯",
+            message:
+              "This app improves efficiency for freelancers. A game-changer.",
+          },
+          {
+            top: 160,
+            right: -200,
+            emoji: "🤑",
+            message:
+              "This app improves efficiency for freelancers. A game-changer.",
+          },
         ].map(({ top, right, emoji }, i: number) => (
           <Testimonial top={top} right={right} emoji={emoji} key={i} />
         ))}
@@ -137,12 +155,21 @@ const StaggeredChildren: FunctionComponent<StaggeredChildrenProps> = () => {
 
 const Home = () => {
   return (
-    <Center bgColor="purple.50">
-      <Box w={600} h="100vh" pt={10} overflow={["hidden", null, "visible"]}>
+    <Center bgColor="purple.50" pt={48}>
+      <Box w={600} h="100vh" overflow={["hidden", null, "visible"]}>
         <StaggeredChildren />
       </Box>
     </Center>
   );
 };
 
-export default Home;
+export default Home;`
+
+const animation = {
+  name: "Landing Hero with testimonials",
+  slug: "landing-hero-testimonials",
+  description: "",
+  source,
+}
+
+export default animation;
