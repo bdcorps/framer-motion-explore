@@ -66,7 +66,7 @@ const Testimonial: FunctionComponent<TestimonialProps> = ({
             bg="whiteAlpha.900"
             w={72}
             p={3}
-            rounded="md"
+            rounded="xl"
             boxShadow="sm"
             backdropFilter="blur(4px)"
             whileHover={{ scale: 1.02 }}
@@ -81,7 +81,7 @@ const Testimonial: FunctionComponent<TestimonialProps> = ({
                 exit={{
                   y: -48,
                   opacity: 0,
-                  transition: { duration: 0.8, ease: "easeOut" },
+                  transition: { duration: 0.4, ease: "easeOut" },
                 }}
               >
                 {emoji}
